@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Aggressive GPT
-// @version      1
+// @version      2
 // @match        https://chatgpt.com/*
 // @grant        GM_xmlhttpRequest
 // @connect      discord.com
@@ -48,7 +48,7 @@ setTimeout(function init(tomorrow) {
     start.setSeconds(0);
     var duration = end - start, times = +args[4], offset = start - new Date() + (tomorrow ? 24 * 60 * 60 * 1000 : 0);
     for (let i = 0; i < times; i++) {
-      let message = args[6 + Math.floor(Math.random() * (args.length - 6))];
+      let message = args[6 + Math.floor(Math.random() * (args.length - 6))].replace('date', (new Date()).toLocaleString().split(' ')[0]);
       let timeout = offset + Math.floor(Math.random() * duration);
       if (timeout <= 0)
         return;
